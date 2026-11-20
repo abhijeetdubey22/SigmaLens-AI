@@ -1,0 +1,2158 @@
+[
+  {
+    "slide_index": 1,
+    "shapes": [
+      {
+        "name": "Title 1",
+        "type": "PLACEHOLDER (14)",
+        "left": 1.9,
+        "top": -0.21,
+        "width": 9.01,
+        "height": 1.8,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "HAWKVZON \u2013 Eyes of A.Eye(A.I) \u000b",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "HAWKVZON \u2013 Eyes of ",
+                "font_name": null,
+                "font_size": 32.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": "A.Eye",
+                "font_name": null,
+                "font_size": 32.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": "(A.I) ",
+                "font_name": null,
+                "font_size": 32.0,
+                "bold": true,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Subtitle 2",
+        "type": "PLACEHOLDER (14)",
+        "left": 0.5,
+        "top": 3.75,
+        "width": 8.9,
+        "height": 1.8,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Retrofitting existing institutional CCTV infrastructure into :",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "Retrofitting existing institutional CCTV infrastructure into :",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": " Real-time crowd recognition",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": " Real-time crowd recognition",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": " Student wellbeing telemetry",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": " Student wellbeing telemetry",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": " Perimeter defence.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": " Perimeter defence.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Title 1",
+        "type": "TEXT_BOX (17)",
+        "left": 0.7,
+        "top": 1.34,
+        "width": 8.49,
+        "height": 1.8,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Autonomous Campus Surveillance,\u000bAttendance & Biometric Intelligence",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "Autonomous Campus Surveillance,",
+                "font_name": null,
+                "font_size": 28.0,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Attendance & Biometric Intelligence",
+                "font_name": null,
+                "font_size": 28.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Straight Connector 7",
+        "type": "LINE (9)",
+        "left": 1.73,
+        "top": 1.12,
+        "width": 6.89,
+        "height": 0
+      },
+      {
+        "name": "Straight Connector 9",
+        "type": "LINE (9)",
+        "left": 0.61,
+        "top": 3.14,
+        "width": 6.89,
+        "height": 0
+      },
+      {
+        "name": "Straight Connector 10",
+        "type": "LINE (9)",
+        "left": 0.5,
+        "top": 4.15,
+        "width": 6.89,
+        "height": 0
+      },
+      {
+        "name": "Subtitle 2",
+        "type": "TEXT_BOX (17)",
+        "left": 0.11,
+        "top": 6.16,
+        "width": 6.68,
+        "height": 0.83,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Founders : Abhijeet Dubey (CTO) ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "Founders",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " : ",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": "Abhijeet",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " Dubey (CTO) ",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": true,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "                      Shiva Pandey (COO) ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "                      Shiva Pandey (COO) ",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": true,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Straight Connector 12",
+        "type": "LINE (9)",
+        "left": 0.33,
+        "top": 5.55,
+        "width": 6.89,
+        "height": 0
+      },
+      {
+        "name": "Picture 14",
+        "type": "PICTURE (13)",
+        "left": 8.79,
+        "top": 0,
+        "width": 1.39,
+        "height": 1.39
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  },
+  {
+    "slide_index": 2,
+    "shapes": [
+      {
+        "name": "Title 1",
+        "type": "PLACEHOLDER (14)",
+        "left": 0,
+        "top": 0.05,
+        "width": 3.45,
+        "height": 0.79,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "THE PROBLEM - ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "THE PROBLEM - ",
+                "font_name": null,
+                "font_size": 28.0,
+                "bold": true,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Title 1",
+        "type": "TEXT_BOX (17)",
+        "left": 0,
+        "top": 0.73,
+        "width": 7.79,
+        "height": 0.79,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Campus Operations & Security Concern ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Campus Operations & Security Concern ",
+                "font_name": null,
+                "font_size": 28.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Straight Connector 7",
+        "type": "LINE (9)",
+        "left": 0,
+        "top": 0.64,
+        "width": 3.29,
+        "height": 0
+      },
+      {
+        "name": "Diagram 10",
+        "type": "None",
+        "left": 0.35,
+        "top": 1.6,
+        "width": 10.27,
+        "height": 5.26
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  },
+  {
+    "slide_index": 3,
+    "shapes": [
+      {
+        "name": "Diagram 3",
+        "type": "None",
+        "left": 0.69,
+        "top": 1.41,
+        "width": 8.89,
+        "height": 5.93
+      },
+      {
+        "name": "TextBox 5",
+        "type": "TEXT_BOX (17)",
+        "left": 0.05,
+        "top": 0.08,
+        "width": 7.15,
+        "height": 0.91,
+        "fill_type": "BACKGROUND (5)",
+        "paragraphs": [
+          {
+            "text": "The Solution \u2013",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "The Solution",
+                "font_name": null,
+                "font_size": 24.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " \u2013",
+                "font_name": null,
+                "font_size": 24.0,
+                "bold": true,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Unified Edge AI Vision & Campus Radar ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Unified Edge AI Vision & Campus Radar ",
+                "font_name": null,
+                "font_size": 24.0,
+                "bold": true,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Straight Connector 7",
+        "type": "LINE (9)",
+        "left": 0,
+        "top": 0.99,
+        "width": 7.27,
+        "height": 0
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  },
+  {
+    "slide_index": 4,
+    "shapes": [
+      {
+        "name": "Title 1",
+        "type": "PLACEHOLDER (14)",
+        "left": 0.74,
+        "top": 0.67,
+        "width": 9.4,
+        "height": 1.44,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Built & Tested: A Fully Functional MVP\u000b\u000b",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Built & Tested: A Fully Functional MVP",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Text Placeholder 2",
+        "type": "PLACEHOLDER (14)",
+        "left": 0.74,
+        "top": 1.92,
+        "width": 4.58,
+        "height": 0.63,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Verified Core Capabilities ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Verified Core Capabilities ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Content Placeholder 3",
+        "type": "PLACEHOLDER (14)",
+        "left": 0.74,
+        "top": 2.99,
+        "width": 4.58,
+        "height": 3.61,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Multi-Stream Video Grabber : Real-time RTSP/CCTV ingestion at 30 FPS with watchdog self healing. ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Multi-Stream Video Grabber ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": ": Real-time RTSP/CCTV ingestion at 30 FPS with watchdog self healing. ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Sub-Millisecond Face Matching : 128-D vector distance classification with 76.4%+ confidence. ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Sub-Millisecond Face Matching",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " : 128-D vector distance classification with 76.4%+ confidence. ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "FACS Emotion Model : Calibrated geometric AU forward pass without racial or lighting bias. ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "FACS Emotion Model",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " : Calibrated geometric AU forward pass without racial or lighting bias. ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Privacy-First Storage : AES-128 encrypted biometrics (1.6 KB/student; 10-year data < 35 GB)",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Privacy-First Storage",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " : AES-128 encrypted biometrics (1.6 KB/student; 10-year data < 35 GB)",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Text Placeholder 4",
+        "type": "PLACEHOLDER (14)",
+        "left": 5.9,
+        "top": 1.92,
+        "width": 4.58,
+        "height": 0.63,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Operational Interfaces",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Operational Interfaces",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Content Placeholder 5",
+        "type": "PLACEHOLDER (14)",
+        "left": 5.73,
+        "top": 2.99,
+        "width": 4.58,
+        "height": 3.61,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Desktop Control Room GUI : Matte Titanium design system with live video, camera cycling, and intruder alerts.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Desktop Control Room GUI ",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": ": Matte Titanium design system with live video, camera cycling, and intruder alerts.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Principal Web Command Centre : Responsive browser portal with live KPI cards, roll rosters, and mood index.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Principal Web Command Centre ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": ": Responsive browser portal with live KPI cards, roll rosters, and mood index.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": " Automated 24/7 Watchdog : Windows startup script with auto-recovery and quiet error handling.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": " ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Automated 24/7 Watchdog ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": ": Windows startup script with auto-recovery and quiet error handling.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Straight Connector 9",
+        "type": "LINE (9)",
+        "left": 5.44,
+        "top": 2.02,
+        "width": 0,
+        "height": 4.58
+      },
+      {
+        "name": "Straight Connector 11",
+        "type": "LINE (9)",
+        "left": 0.74,
+        "top": 2.7,
+        "width": 4.2,
+        "height": 0
+      },
+      {
+        "name": "Straight Connector 12",
+        "type": "LINE (9)",
+        "left": 5.94,
+        "top": 2.7,
+        "width": 3.96,
+        "height": 0
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  },
+  {
+    "slide_index": 5,
+    "shapes": [
+      {
+        "name": "Title 1",
+        "type": "PLACEHOLDER (14)",
+        "left": 0,
+        "top": 0.08,
+        "width": 9.4,
+        "height": 1.44,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "Technical Architecture \u2013\u000bEdge-to-Cloud Hybrid Intelligence \u000b\u000b",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Technical Architecture \u2013",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Edge-to-Cloud Hybrid Intelligence ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Oval 7",
+        "type": "AUTO_SHAPE (1)",
+        "left": 0.67,
+        "top": 1.75,
+        "width": 3.12,
+        "height": 2.6,
+        "fill_type": "SOLID (1)",
+        "fill_theme": "ACCENT_2 (6)",
+        "paragraphs": [
+          {
+            "text": "CCTV Video Capture - Retrieves live video streams from existing IP cameras.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "CCTV Video Capture ",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": "002060"
+              },
+              {
+                "text": "- ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Retrieves live video streams from existing IP cameras.",
+                "font_name": null,
+                "font_size": 16.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Oval 8",
+        "type": "AUTO_SHAPE (1)",
+        "left": 5.52,
+        "top": 1.75,
+        "width": 3.12,
+        "height": 2.37,
+        "fill_type": "SOLID (1)",
+        "fill_theme": "ACCENT_2 (6)",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": []
+          },
+          {
+            "text": "Edge AI Processing -",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Edge AI Processing ",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": "002060"
+              },
+              {
+                "text": "-",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Processes biometric and facial activity data locally using AI",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Processes biometric and facial activity data locally using AI",
+                "font_name": null,
+                "font_size": 16.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "Oval 9",
+        "type": "AUTO_SHAPE (1)",
+        "left": 5.61,
+        "top": 4.88,
+        "width": 3.12,
+        "height": 2.46,
+        "fill_type": "SOLID (1)",
+        "fill_theme": "ACCENT_2 (6)",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": []
+          },
+          {
+            "text": "Cloud Data & Analytics",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Cloud Data & Analytics",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": "002060"
+              }
+            ]
+          },
+          {
+            "text": "- Syncs attendance and security data to Google Cloud for AI-powered insights and reports.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "- ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Syncs attendance and security data to Google Cloud for AI-powered insights and reports.",
+                "font_name": null,
+                "font_size": 16.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "Oval 10",
+        "type": "AUTO_SHAPE (1)",
+        "left": 0.96,
+        "top": 4.94,
+        "width": 3.12,
+        "height": 2.47,
+        "fill_type": "SOLID (1)",
+        "fill_theme": "ACCENT_2 (6)",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": []
+          },
+          {
+            "text": "Identity Verification",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Identity Verification",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": "002060"
+              }
+            ]
+          },
+          {
+            "text": "- Matches student identities and automatically updates attendance records.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "- Matches student identities and automatically updates attendance records.",
+                "font_name": null,
+                "font_size": 16.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "Arrow: Right 11",
+        "type": "AUTO_SHAPE (1)",
+        "left": 4.08,
+        "top": 2.69,
+        "width": 1.29,
+        "height": 0.63,
+        "fill_type": "SOLID (1)",
+        "fill_theme": "ACCENT_3 (7)",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "Arrow: Right 13",
+        "type": "AUTO_SHAPE (1)",
+        "left": 4.15,
+        "top": 5.6,
+        "width": 1.29,
+        "height": 0.63,
+        "fill_type": "SOLID (1)",
+        "fill_rgb": "FFC000",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "Arrow: Down 14",
+        "type": "AUTO_SHAPE (1)",
+        "left": 8.3,
+        "top": 3.91,
+        "width": 0.59,
+        "height": 1.17,
+        "fill_type": "SOLID (1)",
+        "fill_rgb": "FFC000",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  },
+  {
+    "slide_index": 6,
+    "shapes": [
+      {
+        "name": "Title 1",
+        "type": "PLACEHOLDER (14)",
+        "left": 0.1,
+        "top": 0.15,
+        "width": 9.4,
+        "height": 1.44,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "MARKET OPPORTUNITY \u2013 \u000bMassive Market Potential & Global Reach\u000b\u000b",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "MARKET OPPORTUNITY",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " \u2013 ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Massive Market Potential & Global Reach",
+                "font_name": null,
+                "font_size": 31.0,
+                "bold": null,
+                "color": "FFC000"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Rectangle: Rounded Corners 4",
+        "type": "AUTO_SHAPE (1)",
+        "left": 0.43,
+        "top": 1.87,
+        "width": 9.83,
+        "height": 1.64,
+        "fill_type": "BACKGROUND (5)",
+        "line_theme": "ACCENT_6 (10)",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "TextBox 6",
+        "type": "TEXT_BOX (17)",
+        "left": 0.55,
+        "top": 1.96,
+        "width": 9.63,
+        "height": 1.62,
+        "fill_type": "BACKGROUND (5)",
+        "paragraphs": [
+          {
+            "text": "Market Catalysts & Drivers",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": [
+              {
+                "text": "Market Catalysts & Drivers",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "> Mandatory Digital Attendance : UGC, AICTE, and State Boards require verified biometric attendance for accreditation and grant compliance.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "> Mandatory Digital Attendance",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": ": ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "UGC, AICTE, and State Boards require verified biometric attendance for accreditation and grant compliance",
+                "font_name": null,
+                "font_size": 16.0,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": ".",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "> Campus Safety Mandates : Growing push for smart surveillance, anti-ragging measures, and visitor regulation across private university trusts",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "> Campus Safety Mandates ",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": ":",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Growing push for smart surveillance, anti-ragging measures, and visitor regulation across private university trusts",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Arrow: Chevron 7",
+        "type": "AUTO_SHAPE (1)",
+        "left": 0.8,
+        "top": 4.17,
+        "width": 1.25,
+        "height": 0.35,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "Arrow: Chevron 8",
+        "type": "AUTO_SHAPE (1)",
+        "left": 0.77,
+        "top": 5.32,
+        "width": 1.25,
+        "height": 0.35,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "Arrow: Chevron 9",
+        "type": "AUTO_SHAPE (1)",
+        "left": 0.8,
+        "top": 6.48,
+        "width": 1.25,
+        "height": 0.35,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "TextBox 11",
+        "type": "TEXT_BOX (17)",
+        "left": 2.44,
+        "top": 4.1,
+        "width": 4.82,
+        "height": 0.56,
+        "fill_type": "BACKGROUND (5)",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "TextBox 12",
+        "type": "TEXT_BOX (17)",
+        "left": 2.61,
+        "top": 4.27,
+        "width": 4.82,
+        "height": 0.56,
+        "fill_type": "BACKGROUND (5)",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "TextBox 13",
+        "type": "TEXT_BOX (17)",
+        "left": 2.44,
+        "top": 6.37,
+        "width": 4.82,
+        "height": 0.71,
+        "fill_type": "BACKGROUND (5)",
+        "line_theme": "ACCENT_2 (6)",
+        "paragraphs": [
+          {
+            "text": "\u20b91,200 Cr SERVICEABLE ADDRESSABLE MARKET (SAM",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "\u20b91,200 Cr SERVICEABLE ADDRESSABLE MARKET (SAM",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": "FFC000"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "TextBox 14",
+        "type": "TEXT_BOX (17)",
+        "left": 2.39,
+        "top": 4.17,
+        "width": 4.82,
+        "height": 0.4,
+        "fill_type": "BACKGROUND (5)",
+        "paragraphs": [
+          {
+            "text": "58,000+ HIGHER ED COLLEGES (INDIA)",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "58,000+ HIGHER ED COLLEGES (INDIA)",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": "FFC000"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "TextBox 15",
+        "type": "TEXT_BOX (17)",
+        "left": 2.44,
+        "top": 5.31,
+        "width": 4.82,
+        "height": 0.4,
+        "fill_type": "BACKGROUND (5)",
+        "line_theme": "ACCENT_2 (6)",
+        "paragraphs": [
+          {
+            "text": "1.5M K-12 SCHOOLS (INDIA)",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "1.5M K-12 SCHOOLS (INDIA)",
+                "font_name": null,
+                "font_size": null,
+                "bold": true,
+                "color": "FFC000"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Rectangle 17",
+        "type": "AUTO_SHAPE (1)",
+        "left": 2.39,
+        "top": 4.1,
+        "width": 4.6,
+        "height": 0.47,
+        "fill_type": "BACKGROUND (5)",
+        "line_theme": "ACCENT_2 (6)",
+        "paragraphs": [
+          {
+            "text": "",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "CENTER (2)",
+            "runs": []
+          }
+        ]
+      },
+      {
+        "name": "Straight Connector 19",
+        "type": "LINE (9)",
+        "left": 0,
+        "top": 1.23,
+        "width": 7.9,
+        "height": 0
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  },
+  {
+    "slide_index": 7,
+    "shapes": [
+      {
+        "name": "Title 1",
+        "type": "PLACEHOLDER (14)",
+        "left": 0,
+        "top": 0,
+        "width": 9.4,
+        "height": 1.44,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "BUSINESS MODEL \u2013\u000bB2B Hybrid Enterprise SaaS (INR Pricing)",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "BUSINESS MODEL ",
+                "font_name": null,
+                "font_size": 32.0,
+                "bold": true,
+                "color": "FFC000"
+              },
+              {
+                "text": "\u2013",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "B2B Hybrid Enterprise SaaS (INR Pricing)",
+                "font_name": null,
+                "font_size": 24.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Diagram 4",
+        "type": "None",
+        "left": 0.62,
+        "top": 1.76,
+        "width": 8.14,
+        "height": 5.29
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  },
+  {
+    "slide_index": 8,
+    "shapes": [
+      {
+        "name": "Table 2",
+        "type": "TABLE (19)",
+        "left": 0.38,
+        "top": 2.42,
+        "width": 10.16,
+        "height": 3.57,
+        "table": [
+          [
+            "Key Metric / Capability image_1b1466.png",
+            "Traditional Turnstiles (ZKTeco) image_1b1466.png",
+            "Legacy CCTV / NVRs image_1b1466.png",
+            "HawkVzon AI image_1b1466.png"
+          ],
+          [
+            "Transit Speed",
+            "Single-file queue (1 person/3s)",
+            "N/A (No recognition)",
+            "Crowd transit (25+ ft distance at 30 FPS)"
+          ],
+          [
+            "Infrastructure Cost",
+            "High CapEx (\u20b91.5L\u2013\u20b93L per gate)",
+            "High storage footprint",
+            "10x Lower CapEx (Retrofits existing CCTV)"
+          ],
+          [
+            "Surveillance Integration",
+            "Isolated gate database",
+            "Passive forensic review",
+            "Unified Attendance + Perimeter Threat Radar"
+          ],
+          [
+            "Emotion & Wellbeing",
+            "None",
+            "None",
+            "FACS Geometric AU Campus Wellbeing Index"
+          ],
+          [
+            "Data Privacy",
+            "Cloud biometric exposure",
+            "Local raw video only",
+            "AES-128 Local Vector Encryption (1.6 KB/student)"
+          ]
+        ]
+      },
+      {
+        "name": "Text Box 3",
+        "type": "TEXT_BOX (17)",
+        "left": 0.39,
+        "top": 1.45,
+        "width": 5.56,
+        "height": 0.37,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": " Why HawkVzon Wins Against Incumbents",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": " Why HawkVzon Wins Against Incumbents",
+                "font_name": null,
+                "font_size": 16.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Text Box 4",
+        "type": "TEXT_BOX (17)",
+        "left": 0.23,
+        "top": 0.88,
+        "width": 2.82,
+        "height": 0.37,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "COMPETITIVE MOAT",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "COMPETITIVE MOAT",
+                "font_name": null,
+                "font_size": 16.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  },
+  {
+    "slide_index": 9,
+    "shapes": [
+      {
+        "name": "Title 1",
+        "type": "PLACEHOLDER (14)",
+        "left": 0,
+        "top": 0,
+        "width": 9.4,
+        "height": 1.44,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "GOOGLE ECOSYSTEM \u2013\u000bLeveraging Google Cloud & Advanced AI Models",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "GOOGLE ECOSYSTEM",
+                "font_name": null,
+                "font_size": 32.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " \u2013",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Leveraging Google Cloud & Advanced AI Models",
+                "font_name": null,
+                "font_size": 24.0,
+                "bold": true,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Text Placeholder 2",
+        "type": "PLACEHOLDER (14)",
+        "left": 0.37,
+        "top": 2.18,
+        "width": 4.58,
+        "height": 0.63,
+        "fill_type": "None",
+        "line_theme": "ACCENT_3 (7)",
+        "paragraphs": [
+          {
+            "text": "Google AI Models",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Google AI Models",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Content Placeholder 3",
+        "type": "PLACEHOLDER (14)",
+        "left": 0.37,
+        "top": 2.99,
+        "width": 4.58,
+        "height": 3.76,
+        "fill_type": "None",
+        "line_theme": "ACCENT_3 (7)",
+        "paragraphs": [
+          {
+            "text": "Gemma (On-Device / Open Weights) : Deployed on campus edge appliances for zero-latency, offline anomaly classification and privacy-compliant event tagging.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Gemma (On-Device / Open Weights)",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " : Deployed on campus edge appliances for zero-latency, offline anomaly classification and privacy-compliant event tagging.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Gemini Live : Real-time streaming multimodal video reasoning during perimeter alarms to distinguish harmless transit from actual fence scaling or loitering.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Gemini Live",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " : Real-time streaming multimodal video reasoning during perimeter alarms to distinguish harmless transit from actual fence scaling or loitering.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Gemini API : Synthesizes attendance rosters, mood telemetry, and logs into automated morning natural-language briefings for Principals.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Gemini API",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " : Synthesizes attendance rosters, mood telemetry, and logs into automated morning natural-language briefings for Principals.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Text Placeholder 4",
+        "type": "PLACEHOLDER (14)",
+        "left": 5.56,
+        "top": 2.18,
+        "width": 4.58,
+        "height": 0.63,
+        "fill_type": "None",
+        "line_theme": "ACCENT_3 (7)",
+        "paragraphs": [
+          {
+            "text": "Google Cloud Infrastructure",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Google Cloud Infrastructure",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Content Placeholder 5",
+        "type": "PLACEHOLDER (14)",
+        "left": 5.56,
+        "top": 2.99,
+        "width": 4.58,
+        "height": 3.92,
+        "fill_type": "None",
+        "line_theme": "ACCENT_3 (7)",
+        "paragraphs": [
+          {
+            "text": "Cloud Run & Cloud Endpoints : Serverless, auto-scaling central command portal and APIs with zero idle compute cost. ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Cloud Run & Cloud Endpoints ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": ": Serverless, auto-scaling central command portal and APIs with zero idle compute cost. ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Vertex AI : Centralized registry for model evaluation, monitoring, and continuous edge model fine-tuning.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Vertex AI",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " : Centralized registry for model evaluation, monitoring, and continuous edge model fine-tuning.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": " Cloud Pub/Sub & BigQuery : High-throughput ingestion of distributed campus logs for longitudinal multi-year audit analytics. ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": " ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Cloud Pub/Sub & ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "BigQuery",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": ": High-throughput ingestion of distributed campus logs for longitudinal multi-year audit analytics. ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Cloud Storage (GCS) : AES-256 encrypted storage for incident snapshots with 90-day retention policies.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "None",
+            "runs": [
+              {
+                "text": "Cloud Storage (GCS) ",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": ": AES-256 encrypted storage for incident snapshots with 90-day retention policies.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Straight Connector 7",
+        "type": "LINE (9)",
+        "left": 5.23,
+        "top": 1.98,
+        "width": 0,
+        "height": 5.13,
+        "line_theme": "ACCENT_1 (5)"
+      },
+      {
+        "name": "Straight Connector 10",
+        "type": "LINE (9)",
+        "left": 0,
+        "top": 1.15,
+        "width": 7.62,
+        "height": 0,
+        "line_theme": "ACCENT_1 (5)"
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  },
+  {
+    "slide_index": 10,
+    "shapes": [
+      {
+        "name": "Title 1",
+        "type": "PLACEHOLDER (14)",
+        "left": 0.89,
+        "top": -0.5,
+        "width": 8.49,
+        "height": 1.8,
+        "fill_type": "None",
+        "paragraphs": [
+          {
+            "text": "THE TEAM & ROADMAP \u000bExecution Team & Near-Term Milestones",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "THE TEAM & ROADMAP",
+                "font_name": null,
+                "font_size": 40.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " ",
+                "font_name": null,
+                "font_size": 40.0,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Execution Team & Near-Term Milestones",
+                "font_name": null,
+                "font_size": 32.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Subtitle 2",
+        "type": "PLACEHOLDER (14)",
+        "left": 3.48,
+        "top": 3.56,
+        "width": 7.65,
+        "height": 1.2,
+        "fill_type": "None",
+        "line_theme": "ACCENT_1 (5)",
+        "paragraphs": [
+          {
+            "text": "Shiva Pandey \u2014 Co-Founder & COO Operations and institutional strategy lead. Drives campus workflow integrations, educational partnerships, regulatory compliance, and rollout across colleges.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "Shiva Pandey",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " \u2014 ",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Co-Founder & COO Operations and institutional strategy lead. Drives campus workflow integrations, educational partnerships, regulatory compliance, and rollout across colleges.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Subtitle 2",
+        "type": "TEXT_BOX (17)",
+        "left": 0.56,
+        "top": 2.14,
+        "width": 8.21,
+        "height": 1.2,
+        "fill_type": "None",
+        "line_theme": "ACCENT_1 (5)",
+        "paragraphs": [
+          {
+            "text": "Vijay Dubey \u2014 Founder & CTO B.Sc. IT background. Core architect of the edge computer vision pipeline, multi-camera RTSP grabbers, FACS facial action unit models, and AES-128 biometric vector encryption.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "Vijay Dubey",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " \u2014 Founder & CTO B.Sc. IT background. Core architect of the edge computer vision pipeline, multi-camera RTSP grabbers, FACS facial action unit models, and AES-128 biometric vector encryption.",
+                "font_name": null,
+                "font_size": null,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Subtitle 2",
+        "type": "TEXT_BOX (17)",
+        "left": 0.14,
+        "top": 5.07,
+        "width": 9.76,
+        "height": 2.1,
+        "fill_type": "None",
+        "line_theme": "ACCENT_3 (7)",
+        "paragraphs": [
+          {
+            "text": "Next 6 Months Execution Roadmap  \u2014",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "Next 6 Months Execution Roadmap ",
+                "font_name": null,
+                "font_size": 26.0,
+                "bold": true,
+                "color": null
+              },
+              {
+                "text": " \u2014",
+                "font_name": null,
+                "font_size": 26.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Q1: 3 Campus Pilots Deploy on 3 test colleges in India (1,500+ active students, 24 cameras).",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "Q1: ",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "3 Campus Pilots Deploy on 3 test colleges in India (1,500+ active students, 24 cameras).",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Q2: Google Cloud Scale Implement Gemma edge inference and BigQuery multi-campus aggregation.",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "Q2: ",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Google Cloud Scale Implement Gemma edge inference and ",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "BigQuery",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": " multi-campus aggregation.",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          },
+          {
+            "text": "Q3: Commercial Expansion Onboard 15 private college trusts targeting \u20b940 Lakhs ARR ",
+            "font_size": null,
+            "font_bold": null,
+            "font_name": null,
+            "align": "LEFT (1)",
+            "runs": [
+              {
+                "text": "Q3: ",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": null,
+                "color": null
+              },
+              {
+                "text": "Commercial Expansion Onboard 15 private college trusts targeting \u20b940 Lakhs ARR ",
+                "font_name": null,
+                "font_size": 20.0,
+                "bold": null,
+                "color": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "xml_snippet": "<p:sld xmlns:a=\"http://schemas.openxmlformats.org/drawingml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:p=\"http://schemas.openxmlformats.org/presentationml/2006/main\">\n  <p:cSld>\n    <p:spTree>\n      <p:nvGrpSpPr>\n        <p:cNvPr id=\"1\" name=\"\"/>\n        <p:cNvGrpSpPr/>\n        <p:nvPr/>\n      </p:nvGrpSpPr>\n      <p:grpSpPr>\n        <a:xfrm>\n          <a:off x=\"0\" y=\"0\"/>\n          <a:ext cx=\"0\" cy=\"0\"/>\n          <a:chOff x=\"0\" y=\"0\"/>\n      "
+  }
+]

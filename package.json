@@ -1,0 +1,14 @@
+{
+  "name": "sigmalens",
+  "version": "1.0.0",
+  "description": "SigmaLens: Few-Shot Industrial Visual Quality Control & Anomaly Inspection",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host --port 5173",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.3.2"
+  }
+}

@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SigmaLens - Few-Shot Industrial Visual Quality Inspection</title>
+  <meta name="description" content="SigmaLens: Edge-based machine vision inspection app. Learns normal baseline from 20-30 good product photos, scores live camera feeds, displays real-time deviation heatmaps, and logs rejection rates." />
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2300e5ff'/><text y='68' x='50' text-anchor='middle' font-size='55' font-weight='bold' fill='%2306080b'>Σ</text></svg>" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Nav Header -->
+    <header class="top-nav">
+      <div class="brand-section">
+        <div class="logo-mark" aria-hidden="true">Σ</div>
+        <div class="brand-title-wrap">
+          <h1>SigmaLens <span class="badge">v2.6 Enterprise</span></h1>
+          <p>Few-Shot Industrial Anomaly Detection</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-center" aria-label="Main Navigation">
+        <button id="nav-btn-inspect" class="tab-btn active" data-tab="inspect">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg>
+          Live Inspection
+        </button>
+        <button id="nav-btn-conveyor" class="tab-btn" data-tab="conveyor">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/></svg>
+          Conveyor Sorter
+        </button>
+        <button id="nav-btn-training" class="tab-btn" data-tab="training">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Learn Normal
+        </button>
+        <button id="nav-btn-testbench" class="tab-btn" data-tab="testbench">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Defect Bench
+        </button>
+        <button id="nav-btn-analytics" class="tab-btn" data-tab="analytics">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Pareto & Cost ROI
+        </button>
+        <button id="nav-btn-logs" class="tab-btn" data-tab="logs">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Logs & Certs
+        </button>
+      </nav>
+
+      <!-- Status Indicator, Andon Tower, PLC & Audio -->
+      <div class="nav-actions">
+        <!-- Andon Stack Light Mini -->
+        <div class="andon-tower-mini" title="Andon Stack Light: Red (Reject/Stop), Amber (SPC Drift), Green (Normal Run)">
+          <span class="andon-light red" id="andon-red"></span>
+          <span class="andon-light amber" id="andon-amber"></span>
+          <span class="andon-light green active" id="andon-green"></span>
+        </div>
+
+        <!-- Virtual PLC & Modbus Trigger -->
+        <button id="btn-open-plc" class="hud-btn" title="Simulated Industrial PLC I/O, Solenoids & Modbus TCP" style="padding: 5px 9px; font-size: 11px;">
+          ⚡ PLC / Modbus
+        </button>
+
+        <!-- Voice Announcer Toggle -->
+        <button id="btn-toggle-voice" class="hud-btn active" title="Industrial Voice Announcer (Speaks verdicts aloud for operators)" style="padding: 5px 9px; font-size: 11px;">
+          🗣️ Voice: ON
+        </button>
+        <div class="status-indicator" id="system-status-indicator">
+          <span class="pulse-dot"></span>
+          <span id="system-status-text">CV ENGINE READY</span>
+        </div>
+        <button id="audio-toggle-btn" class="audio-btn" title="Toggle Inspection Chimes" aria-label="Toggle sound">
+          <svg id="audio-icon-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Top Production Telemetry / KPI Banner -->
+    <section class="kpi-banner" aria-label="Today Production Metrics">
+      <div class="kpi-card highlight-reject">
+        <div class="kpi-label">
+          <span>Today Rejection Rate</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="kpi-value red" id="kpi-rejection-rate">0.0<small>%</small></div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Total Inspected Today</div>
+        <div class="kpi-value cyan" id="kpi-total-inspected">0</div>
+      </div>
+
+      <div class="kpi-card highlight-pass">
+        <div class="kpi-label">Passed Units</div>
+        <div class="kpi-value green" id="kpi-passed-count">0</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Rejections</div>
+        <div class="kpi-value red" id="kpi-rejected-count">0</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Active Recipe</div>
+        <div class="kpi-value" style="font-size: 15px;" id="kpi-recipe-name">PCB-Assembly</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Inspection Latency</div>
+        <div class="kpi-value amber" id="kpi-latency">0<small>ms</small></div>
+      </div>
+    </section>
+
+    <!-- SPC Early Process Drift Warning Banner (Nelson Rule #2 Detection) -->
+    <div id="spc-drift-banner" class="spc-drift-banner" style="display: none;">
+      <div class="spc-drift-content">
+        <span class="spc-drift-icon">⚠️</span>
+        <div>
+          <strong>SPC Process Drift Detected (Nelson Rule #2):</strong>
+          <span id="spc-drift-text">4 consecutive units show upward anomaly trend. Spindle tool wear or feeder drift suspected before out-of-spec defects occur.</span>
+        </div>
+      </div>
+      <button id="btn-dismiss-drift" class="btn-dismiss-drift">Acknowledge</button>
+    </div>
+
+    <!-- Main App Body -->
+    <main class="main-content">
+      <!-- VIEW 1: LIVE INSPECTION -->
+      <section id="view-inspect" class="view-section active">
+        <div class="inspection-viewport-panel">
+          <!-- Viewport Panel Card -->
+          <div class="panel-card">
+            <div class="panel-header">
+              <div class="panel-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                Inspection Feed & Thermal Deviation Map
+              </div>
+              <div class="panel-controls">
+                <!-- Auto-Deskew & Orientation Snap -->
+                <button id="btn-toggle-deskew" class="hud-btn" title="Automatically straighten tilted parts (±30°) and center them using spatial central moments">
+                  🔄 Auto-Align: OFF
+                </button>
+                <button id="btn-toggle-lighting" class="hud-btn active" title="Normalize ambient light variations & glare (CIELAB luminance equalization)">
+                  <span style="color: var(--accent-amber);">☀</span> Light Invariance: ON
+                </button>
+                <select id="camera-source-select" class="hud-btn" title="Choose Video Source">
+                  <option value="testbench">Pre-loaded Test Bench</option>
+                  <option value="user">Webcam (Front/Operator)</option>
+                  <option value="environment">Phone Camera (Rear / Macro)</option>
+                </select>
+                <button id="btn-toggle-guide" class="hud-btn active" title="Toggle Part Alignment Guide">
+                  Alignment Grid
+                </button>
+              </div>
+            </div>
+
+            <!-- Viewport HUD Screen -->
+            <div class="viewport-hud" id="viewport-hud-container">
+              <!-- Live Camera Video Feed (Hidden when using test bench) -->
+              <video id="camera-video" autoplay playsinline muted style="display: none;"></video>
+              <!-- Primary Inspection Canvas (Renders live frame or active unit) -->
+              <canvas id="viewport-canvas" width="320" height="320"></canvas>
+              <!-- Heatmap Overlay Canvas -->
+              <canvas id="heatmap-overlay-canvas" width="320" height="320"></canvas>
+
+              <!-- HUD Target Reticle -->
+              <div class="hud-overlay" id="hud-overlay-elements">
+                <div class="hud-corner tl"></div>
+                <div class="hud-corner tr"></div>
+                <div class="hud-corner bl"></div>
+                <div class="hud-corner br"></div>
+                <div class="hud-crosshair"></div>
+                <div class="hud-inspection-zone" id="hud-inspection-zone">
+                  <span class="hud-zone-tag">TARGET ZONE [320x320]</span>
+                </div>
+                <!-- Dynamic Defect Bounding Box -->
+                <div id="dynamic-defect-box" class="defect-callout-box" style="display: none;">
+                  <span id="dynamic-defect-tag" class="defect-callout-tag">ANOMALY DETECTED</span>
+                </div>
+                <!-- Scanline Effect -->
+                <div id="hud-scanline" class="hud-scanline"></div>
+                <!-- Hands-Free Motion Trigger Status Banner -->
+                <div id="hud-handsfree-status" class="hud-handsfree-tag" style="display: none;">
+                  HANDS-FREE: WAITING FOR PART PLACEMENT...
+                </div>
+              </div>
+            </div>
+
+            <!-- Viewport Bottom Controls -->
+            <div class="viewport-controls-bar">
+              <div class="hud-tools">
+                <!-- Heatmap Opacity Slider -->
+                <div class="control-group" title="Adjust Anomaly Heatmap Blend Intensity">
+                  <label for="heatmap-opacity-slider">Heatmap:</label>
+                  <input type="range" id="heatmap-opacity-slider" class="slider-sm" min="0" max="100" value="75" />
+                  <span id="heatmap-opacity-val" style="font-family: var(--font-mono); font-size: 11px;">75%</span>
+                </div>
+
+                <!-- Hands-Free Motion Trigger Button -->
+                <button id="btn-handsfree-trigger" class="hud-btn" title="Inspects automatically when worker places part and movement stops (zero clicks required)">
+                  ✋ Hands-Free Auto: OFF
+                </button>
+
+                <!-- Continuous Auto-Scan Toggle -->
+                <button id="btn-auto-scan" class="hud-btn" title="Inspect automatically at 400ms intervals">
+                  <span class="pulse-dot" style="width: 6px; height: 6px; background: var(--text-dim);"></span>
+                  Auto-Scan: OFF
+                </button>
+
+                <!-- Quick Mentor Test Buttons -->
+                <button type="button" id="btn-quick-good-cap" class="hud-btn" style="background: rgba(34, 197, 94, 0.2); border: 1px solid var(--pass-color); color: var(--pass-color); font-weight: 600;" title="Instantly load mentor white bottle cap (PASS)">
+                  ✓ Test Good White Cap
+                </button>
+                <button type="button" id="btn-quick-diff-cap" class="hud-btn" style="background: rgba(239, 68, 68, 0.2); border: 1px solid var(--fail-color); color: var(--fail-color); font-weight: 600;" title="Instantly test mentor's different cap (REJECT)">
+                  ✗ Test Mentor's Different Cap
+                </button>
+
+                <!-- Upload custom unit photo -->
+                <label class="hud-btn" style="cursor: pointer;" title="Upload photo to inspect">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Upload Unit
+                  <input type="file" id="file-unit-upload" accept="image/*" style="display: none;" />
+                </label>
+              </div>
+
+              <!-- Action Buttons -->
+              <div style="display: flex; gap: 10px; width: 100%; flex-wrap: wrap;">
+                <button type="button" id="btn-train-this-cap" class="btn-inspect-primary" style="flex: 1; background: linear-gradient(135deg, #10b981 0%, #059669 100%); min-width: 200px;" title="Train model on the cap currently in camera">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                  <span>🎯 1-CLICK: TRAIN ON THIS CAP</span>
+                </button>
+
+                <button id="btn-inspect-now" class="btn-inspect-primary" style="flex: 1; min-width: 200px;" title="Trigger Inspection (or press Space)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span>INSPECT CURRENT UNIT</span>
+                  <kbd>SPACE</kbd>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: FACTORY CONVEYOR LINE SORTER SIMULATION -->
+      <section id="view-conveyor" class="view-section">
+        <div class="conveyor-container">
+          <!-- Conveyor Top Controls Panel -->
+          <div class="conveyor-controls-panel">
+            <div class="conveyor-btn-group">
+              <button id="btn-toggle-conveyor" class="btn-conveyor-toggle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span id="conveyor-toggle-text">START CONVEYOR LINE</span>
+              </button>
+              <button id="btn-conveyor-single-step" class="btn-secondary-action" title="Feed single unit through optical gate">
+                Step 1 Unit
+              </button>
+              <button id="btn-clear-conveyor-bins" class="btn-secondary-action" style="color: var(--fail-color);" title="Reset bin counts">
+                Empty Bins
+              </button>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+              <!-- Speed Selector -->
+              <div class="control-group" title="Conveyor Line Throughput">
+                <label for="conveyor-speed-select">Line Speed:</label>
+                <select id="conveyor-speed-select" class="hud-btn" style="padding: 6px 10px;">
+                  <option value="15">15 PPM (Precision Batch)</option>
+                  <option value="30" selected>30 PPM (Standard Line)</option>
+                  <option value="45">45 PPM (High Speed)</option>
+                  <option value="60">60 PPM (Peak Throughput)</option>
+                </select>
+              </div>
+
+              <!-- Defect Injection Mix Slider -->
+              <div class="control-group" title="Defect Probability in Infeed Stream">
+                <label for="conveyor-defect-ratio">Defect Mix:</label>
+                <input type="range" id="conveyor-defect-ratio" class="slider-sm" min="0" max="60" value="25" />
+                <span id="conveyor-defect-ratio-val" style="font-family: var(--font-mono); font-size: 11px;">25%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conveyor Line Tachometer / Real-time OEE Dashboard -->
+          <div class="conveyor-tachometer-grid">
+            <div class="tach-box">
+              <span class="tach-lbl">Sorting Rate</span>
+              <span class="tach-val" id="tach-ppm" style="color: var(--accent-cyan);">0.0 <small style="font-size: 12px;">PPM</small></span>
+            </div>
+            <div class="tach-box">
+              <span class="tach-lbl">Line OEE Yield</span>
+              <span class="tach-val" id="tach-oee" style="color: var(--pass-color);">100.0<small style="font-size: 12px;">%</small></span>
+            </div>
+            <div class="tach-box">
+              <span class="tach-lbl">Units Infeed</span>
+              <span class="tach-val" id="tach-total">0</span>
+            </div>
+            <div class="tach-box">
+              <span class="tach-lbl">Pneumatic Kicks</span>
+              <span class="tach-val" id="tach-kicks" style="color: var(--fail-color);">0</span>
+            </div>
+            <div class="tach-box">
+              <span class="tach-lbl">Gate Solenoid</span>
+              <span class="tach-val" id="tach-solenoid" style="font-size: 14px; color: var(--text-muted);">READY</span>
+            </div>
+          </div>
+
+          <!-- Visual Animated Conveyor Stage -->
+          <div class="conveyor-visual-stage" id="conveyor-stage-container">
+            <!-- Optical Sensor Beam -->
+            <div class="trigger-beam-line" id="conveyor-trigger-beam"></div>
+
+            <!-- Optical Inspection Hood -->
+            <div class="inspection-hood">
+              <div class="inspection-hood-label">VISION HOOD #01<br><small>320x320 AOI</small></div>
+              <div class="inspection-hood-lens">
+                <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></div>
+              </div>
+              <div class="strobe-flash" id="conveyor-strobe"></div>
+              <span style="font-family: var(--font-mono); font-size: 9px; color: #94a3b8;" id="hood-scan-status">SENSOR IDLE</span>
+            </div>
+
+            <!-- Pneumatic Reject Kicker Assembly -->
+            <div class="pneumatic-kicker-assembly" id="pneumatic-kicker">
+              <div class="kicker-cylinder"></div>
+              <div class="kicker-piston-rod"></div>
+              <div class="kicker-pad"></div>
+              <div class="air-burst">💨 PSSHT!</div>
+            </div>
+
+            <!-- Animated Conveyor Track & Belt -->
+            <div class="conveyor-track-wrap" id="conveyor-track">
+              <div class="conveyor-belt-graphic" id="conveyor-belt-strip"></div>
+              <div class="conveyor-rollers">
+                <div class="conveyor-roller"></div>
+                <div class="conveyor-roller"></div>
+                <div class="conveyor-roller"></div>
+                <div class="conveyor-roller"></div>
+                <div class="conveyor-roller"></div>
+                <div class="conveyor-roller"></div>
+                <div class="conveyor-roller"></div>
+                <div class="conveyor-roller"></div>
+              </div>
+              <!-- Moving Units will be dynamically injected here -->
+            </div>
+
+            <!-- Exit Collection Bins -->
+            <div class="conveyor-hoppers">
+              <div class="hopper-bin accept">
+                <div class="bin-title">
+                  <span style="color: var(--pass-color);">✓ ACCEPTED (PASS)</span>
+                  <span style="font-size: 10px; color: var(--text-dim);">TRAY A</span>
+                </div>
+                <div class="bin-count" id="bin-accept-count">0</div>
+              </div>
+              <div class="hopper-bin reject">
+                <div class="bin-title">
+                  <span style="color: var(--fail-color);">✗ SCRAP DIVERTER</span>
+                  <span style="font-size: 10px; color: var(--text-dim);">PNEUMATIC BIN</span>
+                </div>
+                <div class="bin-count" id="bin-reject-count">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: LEARN NORMAL (20-30 GOLDEN SAMPLES) -->
+      <section id="view-training" class="view-section">
+        <div class="training-container">
+          <!-- Hero Banner -->
+          <div class="training-hero">
+            <div class="hero-text">
+              <h2>Few-Shot "Normal" Learning Engine</h2>
+              <p>SigmaLens learns normal manufacturing tolerances from 20–30 good unit photos. It computes spatial color moments, Sobel edge stability, and patch variance to build a 3-sigma statistical baseline. No defect labels needed!</p>
+            </div>
+            <div class="training-actions">
+              <button id="btn-burst-capture" class="btn-primary-action">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                Burst Capture 25 Golden via Camera
+              </button>
+              <label class="btn-secondary-action" style="cursor: pointer;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Upload Good Photos (20-30)
+                <input type="file" id="file-golden-upload" accept="image/*" multiple style="display: none;" />
+              </label>
+              <button id="btn-clear-golden" class="btn-secondary-action" style="color: var(--fail-color);">
+                Clear Samples
+              </button>
+            </div>
+          </div>
+
+          <!-- Preloaded Industrial Recipes -->
+          <div class="panel-card" style="padding: 20px;">
+            <div style="margin-bottom: 14px;">
+              <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Select a Preloaded Industrial Product Recipe</h3>
+              <p style="font-size: 12px; color: var(--text-muted);">Instantly populates 20–25 golden baseline samples and calibrates normal process variance.</p>
+            </div>
+            <div class="catalog-grid" id="catalog-grid-container">
+              <!-- Dynamically rendered product cards -->
+            </div>
+          </div>
+
+          <!-- Golden Gallery & Baseline Calibration Details -->
+          <div class="golden-gallery-section">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <h3 style="font-size: 15px; font-weight: 700;">Golden Sample Gallery</h3>
+                <span id="golden-count-badge" style="font-family: var(--font-mono); font-size: 11px; background: rgba(0, 229, 255, 0.15); color: var(--accent-cyan); padding: 2px 8px; border-radius: 12px;">0 Samples</span>
+              </div>
+              <button id="btn-train-model" class="btn-primary-action" style="background: var(--pass-color); color: #04131d;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                Re-Train & Calibrate Model
+              </button>
+            </div>
+
+            <!-- Gallery Thumbnails -->
+            <div class="gallery-grid" id="golden-gallery-grid">
+              <!-- Thumbnails generated dynamically -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: DEFECT TEST BENCH -->
+      <section id="view-testbench" class="view-section">
+        <div class="training-container">
+          <div class="panel-card" style="padding: 24px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+              <div>
+                <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">Industrial Defect Test Bench</h2>
+                <p style="font-size: 13px; color: var(--text-muted);">Simulate real-world factory defects or inject custom anomalies to test detection sensitivity.</p>
+              </div>
+              <button id="btn-load-perfect-unit" class="btn-secondary-action">
+                Load Perfect Golden Unit
+              </button>
+            </div>
+
+            <!-- Defect preset buttons -->
+            <div class="test-bench-grid" id="defect-presets-container">
+              <!-- Defect presets generated dynamically based on active product -->
+            </div>
+
+            <!-- Interactive Anomaly Injector Tool -->
+            <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">Interactive Anomaly Brush</h4>
+                <p style="font-size: 12px; color: var(--text-muted);">Click and drag directly on the Live Inspection canvas to paint synthetic scratches, burns, or contamination.</p>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button id="btn-brush-scratch" class="hud-btn active">Scratch Tool</button>
+                <button id="btn-brush-burn" class="hud-btn">Thermal Burn Tool</button>
+                <button id="btn-brush-oil" class="hud-btn">Oil Stain Tool</button>
+                <button id="btn-brush-clear" class="hud-btn" style="color: var(--fail-color);">Reset Modifications</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW: INDUSTRIAL PARETO DEFECT ANALYTICS & SIX SIGMA ROI CALCULATOR -->
+      <section id="view-analytics" class="view-section">
+        <div class="conveyor-container">
+          <!-- Two-column grid: Pareto Chart on Left, ROI Calculator on Right -->
+          <div class="analytics-grid-two-col">
+            <!-- Pareto Defect Analysis Card -->
+            <div class="pareto-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 2px;">80/20 Defect Pareto Analysis</h3>
+                  <p style="font-size: 12px; color: var(--text-muted);">Identifies the vital 20% of defect modes driving 80% of plant rejections</p>
+                </div>
+                <span class="badge" style="background: rgba(0, 229, 255, 0.15); color: var(--accent-cyan); font-family: var(--font-mono); font-size: 11px;">Six Sigma DMAIC</span>
+              </div>
+
+              <!-- Pareto Chart Canvas -->
+              <div class="pareto-canvas-wrap">
+                <canvas id="pareto-canvas" width="560" height="250"></canvas>
+              </div>
+
+              <!-- Pareto Legend -->
+              <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); padding-top: 8px; border-top: 1px solid var(--border-subtle);">
+                <div style="display: flex; gap: 14px;">
+                  <span><strong style="color: #00e5ff;">■</strong> Defect Frequency Count</span>
+                  <span><strong style="color: #ffb300;">●—</strong> Cumulative % Curve</span>
+                  <span><strong style="color: #ff3366;">- -</strong> 80% Vital Few Cutoff</span>
+                </div>
+                <span id="pareto-sample-count">Active Recipe Defects</span>
+              </div>
+            </div>
+
+            <!-- Financial Scrap Cost & Keyence ROI Calculator -->
+            <div class="roi-card">
+              <div>
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--pass-color); text-transform: uppercase; font-weight: 700;">Executive Business Case</span>
+                <h3 style="font-size: 16px; font-weight: 700; margin-top: 2px;">Plant Scrap Cost & AOI Payback Calculator</h3>
+                <p style="font-size: 12px; color: var(--text-muted);">Quantifies annual cost of scrap prevented vs ₹20,00,000 ($25,000) legacy AOI</p>
+              </div>
+
+              <div class="roi-inputs-grid">
+                <div class="roi-input-row">
+                  <div class="row-header">
+                    <label for="roi-unit-cost">Unit Scrap Value / Part Cost:</label>
+                    <span class="val-badge" id="roi-unit-cost-val">₹ 350</span>
+                  </div>
+                  <input type="range" id="roi-unit-cost" class="slider-sm" min="50" max="5000" step="50" value="350" />
+                </div>
+
+                <div class="roi-input-row">
+                  <div class="row-header">
+                    <label for="roi-daily-volume">Daily Production Output (Units/Day):</label>
+                    <span class="val-badge" id="roi-daily-volume-val">5,000</span>
+                  </div>
+                  <input type="range" id="roi-daily-volume" class="slider-sm" min="500" max="25000" step="500" value="5000" />
+                </div>
+
+                <div class="roi-input-row">
+                  <div class="row-header">
+                    <label for="roi-human-escape">Baseline Human Escape Rate:</label>
+                    <span class="val-badge" id="roi-human-escape-val">8.5%</span>
+                  </div>
+                  <input type="range" id="roi-human-escape" class="slider-sm" min="3" max="15" step="0.5" value="8.5" />
+                </div>
+              </div>
+
+              <!-- Computed Financial Output KPI Banner -->
+              <div class="roi-result-banner">
+                <div class="roi-stat-box">
+                  <span class="stat-label">Daily Scrap Avoided</span>
+                  <span class="stat-val green" id="roi-daily-savings">₹ 1,48,750</span>
+                </div>
+                <div class="roi-stat-box">
+                  <span class="stat-label">Annualized Quality ROI</span>
+                  <span class="stat-val gold" id="roi-annual-savings">₹ 4.46 Cr</span>
+                </div>
+                <div class="roi-stat-box">
+                  <span class="stat-label">Payback Period vs Keyence</span>
+                  <span class="stat-val green" id="roi-payback-days">13.4 Days</span>
+                </div>
+                <div class="roi-stat-box">
+                  <span class="stat-label">Cloud Server Cost</span>
+                  <span class="stat-val" style="color: var(--accent-cyan);">₹ 0 / Month</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Six Sigma DMAIC Root Cause Recommendation Card -->
+          <div class="dmaic-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h4 style="font-size: 14px; font-weight: 700; color: var(--text-main);">
+                Root Cause Remediation Guide (<span id="dmaic-top-defect-name" style="color: var(--fail-color);">Solder Bridge Short</span>)
+              </h4>
+              <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-dim);">Automated Quality Advisory</span>
+            </div>
+            <div class="dmaic-steps-grid">
+              <div class="dmaic-step-pill">
+                <span class="step-name">1. Define & Measure</span>
+                <span class="step-desc" id="dmaic-step1">Defect accounts for 44.2% of all assembly scrap. Defect concentration localized at IC U1 pins.</span>
+              </div>
+              <div class="dmaic-step-pill">
+                <span class="step-name">2. Analyze Root Cause</span>
+                <span class="step-desc" id="dmaic-step2">Excessive solder paste deposition from stencil aperture wear or conveyor wave flux overspray.</span>
+              </div>
+              <div class="dmaic-step-pill">
+                <span class="step-name">3. Improve Action</span>
+                <span class="step-desc" id="dmaic-step3">Recalibrate squeegee pressure to 0.18 kg/cm and reduce solder bath temperature by 4°C.</span>
+              </div>
+              <div class="dmaic-step-pill">
+                <span class="step-name">4. Control (SPC)</span>
+                <span class="step-desc" id="dmaic-step4">Monitor SigmaLens Anomaly Z-Score needle. Maintain Cpk ≥ 1.33 across next 200 consecutive boards.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 4: SUPERVISOR LOGS & ANALYTICS -->
+      <section id="view-logs" class="view-section">
+        <div class="logs-section">
+          <div class="logs-toolbar">
+            <div class="logs-filters">
+              <button class="filter-btn active" data-filter="all">All Inspections (<span id="count-filter-all">0</span>)</button>
+              <button class="filter-btn" data-filter="rejections">Rejections Only (<span id="count-filter-fail" style="color: var(--fail-color);">0</span>)</button>
+              <button class="filter-btn" data-filter="passed">Passed Only (<span id="count-filter-pass" style="color: var(--pass-color);">0</span>)</button>
+            </div>
+            <div class="logs-actions">
+              <!-- WhatsApp Alert & Mobile Connect Buttons -->
+              <button id="btn-whatsapp-alert" class="btn-export" style="color: #25d366; border-color: rgba(37, 211, 102, 0.4);" title="Send Rejection Spike Alert to Plant Manager via WhatsApp">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                WhatsApp Alert
+              </button>
+              <button id="btn-mobile-connect" class="btn-export" title="Connect Phone Camera wirelessly via QR code">
+                📱 Phone QR Link
+              </button>
+              <button id="btn-gen-iso-cert" class="btn-primary-action" style="background: linear-gradient(135deg, #ffb300, #ff8f00); color: #111;" title="Generate Auditable ISO 9001 Batch Certificate">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+                ISO-9001 Certificate
+              </button>
+              <button id="btn-export-csv" class="btn-export" title="Export to Excel / ERP CSV">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export CSV
+              </button>
+              <button id="btn-export-json" class="btn-export" title="Export JSON Report">
+                Export JSON
+              </button>
+              <button id="btn-clear-logs" class="btn-export" style="color: var(--fail-color);" title="Reset Today's Shift Logs">
+                Reset Shift
+              </button>
+            </div>
+          </div>
+
+          <!-- Inspection Log Table -->
+          <div class="table-container">
+            <table class="qc-table" id="qc-logs-table">
+              <thead>
+                <tr>
+                  <th>Unit ID</th>
+                  <th>Timestamp</th>
+                  <th>Decision</th>
+                  <th>Anomaly Score</th>
+                  <th>Confidence</th>
+                  <th>Threshold</th>
+                  <th>Defect Coordinates</th>
+                  <th>Preview</th>
+                </tr>
+              </thead>
+              <tbody id="qc-logs-tbody">
+                <!-- Log rows rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT SIDEBAR: SUPERVISOR CONTROLS & REAL-TIME VERDICT -->
+      <aside class="supervisor-sidebar" aria-label="Supervisor Control Panel">
+        <!-- Verdict Card -->
+        <div class="verdict-card verdict-ready" id="verdict-display-card">
+          <div class="verdict-title">Current Unit Status</div>
+          <div class="verdict-badge" id="verdict-text">READY</div>
+          <div class="verdict-subtext" id="verdict-subtext">Awaiting inspection trigger</div>
+
+          <!-- Score Metrics Breakdown -->
+          <div class="score-details-grid">
+            <div class="score-metric-box">
+              <span class="label">Anomaly Score</span>
+              <span class="value" id="current-anomaly-score">--<small>%</small></span>
+            </div>
+            <div class="score-metric-box">
+              <span class="label">Confidence</span>
+              <span class="value" id="current-confidence">--<small>%</small></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Supervisor Tunable Threshold Panel -->
+        <div class="threshold-panel">
+          <div class="threshold-header">
+            <span class="threshold-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              Supervisor Threshold
+            </span>
+            <span class="threshold-badge" id="threshold-val-display">18.5%</span>
+          </div>
+
+          <!-- Slider -->
+          <div class="threshold-slider-wrap">
+            <input type="range" id="supervisor-threshold-slider" class="threshold-slider" min="5" max="60" step="0.5" value="18.5" />
+          </div>
+
+          <!-- Statistical Reference Track -->
+          <div class="distribution-track" title="SPC Distribution: Green is Golden baseline; White needle is current unit">
+            <div class="dist-zone-good" id="dist-zone-good" style="width: 30%;"></div>
+            <div class="dist-threshold-marker" id="dist-threshold-marker" style="left: 30.8%;"></div>
+            <div class="dist-current-score-needle" id="dist-needle" style="left: 0%;"></div>
+          </div>
+          <div class="dist-legend">
+            <span>0% (Golden Mean)</span>
+            <span id="dist-legend-threshold">Threshold: 18.5%</span>
+            <span>60% (Severe)</span>
+          </div>
+
+          <!-- Nudge Controls -->
+          <div class="nudge-buttons">
+            <button class="btn-nudge" id="btn-nudge-down">- 1.0% (Stricter)</button>
+            <button class="btn-nudge" id="btn-nudge-up">+ 1.0% (Tolerant)</button>
+          </div>
+
+          <!-- Recommended 3-Sigma button -->
+          <button class="btn-preset-spc" id="btn-reset-spc-threshold" title="Reset threshold to Golden dataset μ + 3σ">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            Auto-Calibrate 3-Sigma Baseline
+          </button>
+        </div>
+
+        <!-- Defect Localization Info -->
+        <div class="defect-info-card">
+          <div class="defect-info-header">
+            <span>Primary Defect Region</span>
+            <span id="defect-severity-pill" style="font-size: 10px; font-family: var(--font-mono); color: var(--text-dim);">NO DEFECT</span>
+          </div>
+          <div class="defect-location-pill" id="defect-location-display">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span id="defect-coords-text">None (Uniform baseline)</span>
+          </div>
+        </div>
+
+        <!-- Golden Baseline Model Snapshot -->
+        <div class="baseline-info-box">
+          <div class="golden-preview-wrap">
+            <img id="golden-mean-preview-img" class="golden-thumb" alt="Golden reference average" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' fill='%23111'></svg>" />
+            <div class="golden-details">
+              <span class="title" id="golden-model-name">SMT Circuit Board</span>
+              <span class="stats" id="golden-model-stats">24 Golden Units • Calibrated</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Side-by-Side Review Modal -->
+    <div class="modal-backdrop" id="inspection-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modal-unit-title" style="font-size: 16px; font-weight: 700;">Inspection Audit - Unit #QC-1001</h3>
+          <button id="modal-close-btn" class="btn-close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-view">
+            <h4>Captured Unit (With Anomaly Heatmap)</h4>
+            <div class="modal-img-wrap">
+              <img id="modal-unit-img" alt="Captured inspection frame" />
+            </div>
+          </div>
+          <div class="modal-image-view">
+            <h4>Golden Reference Baseline Mean</h4>
+            <div class="modal-img-wrap">
+              <img id="modal-golden-img" alt="Golden baseline reference" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Official ISO-9001 Batch Quality Certificate Modal -->
+    <div class="modal-backdrop" id="iso-cert-modal">
+      <div class="modal-content iso-cert-container">
+        <div class="iso-cert-header">
+          <div>
+            <div class="iso-cert-badge">ISO 9001:2015 CERTIFIED QA</div>
+            <h2 style="font-size: 20px; font-weight: 800; letter-spacing: -0.5px; margin-top: 4px;">CERTIFICATE OF QUALITY CONFORMANCE</h2>
+            <p style="font-size: 12px; color: var(--text-muted);">TechForge Quality Inspection Laboratory • Automated Optical Inspection (AOI)</p>
+          </div>
+          <button id="iso-cert-close-btn" class="btn-close-modal">&times;</button>
+        </div>
+
+        <div class="iso-cert-body">
+          <div class="iso-meta-grid">
+            <div><span class="iso-label">CERTIFICATE ID:</span> <span id="cert-id" class="iso-val">TF-QC-2026-089</span></div>
+            <div><span class="iso-label">SHIFT DATE:</span> <span id="cert-date" class="iso-val">Oct 2, 2026</span></div>
+            <div><span class="iso-label">PRODUCT RECIPE:</span> <span id="cert-recipe" class="iso-val">SMT Circuit Board (Rev-D)</span></div>
+            <div><span class="iso-label">INSPECTION STANDARD:</span> <span class="iso-val">3-Sigma Statistical Tolerance</span></div>
+          </div>
+
+          <div class="iso-kpi-summary">
+            <div class="iso-kpi-box">
+              <span class="label">BATCH SIZE</span>
+              <span id="cert-total" class="num">0</span>
+            </div>
+            <div class="iso-kpi-box">
+              <span class="label">ACCEPTED UNITS</span>
+              <span id="cert-passed" class="num green">0</span>
+            </div>
+            <div class="iso-kpi-box">
+              <span class="label">REJECTS</span>
+              <span id="cert-rejected" class="num red">0</span>
+            </div>
+            <div class="iso-kpi-box">
+              <span class="label">YIELD RATE</span>
+              <span id="cert-yield" class="num">100.0%</span>
+            </div>
+            <div class="iso-kpi-box">
+              <span class="label">Cpk PROCESS CAPABILITY</span>
+              <span id="cert-cpk" class="num green">1.48</span>
+            </div>
+          </div>
+
+          <div class="iso-signoff">
+            <div class="signoff-box">
+              <div class="sign-line">✓ Digitally Signed by SigmaLens Engine</div>
+              <span class="sign-title">Automated Edge AOI Station #01</span>
+            </div>
+            <div class="signoff-box">
+              <div class="sign-line">QA Supervisor: _______________</div>
+              <span class="sign-title">Shift Quality Operations Manager</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="iso-cert-footer">
+          <button id="btn-print-iso-cert" class="btn-primary-action">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print Official Certificate
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp Supervisor Emergency Alert Modal -->
+    <div class="modal-backdrop" id="whatsapp-alert-modal">
+      <div class="modal-content" style="max-width: 520px; padding: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px;">💬</div>
+            <h3 style="font-size: 16px; font-weight: 700;">WhatsApp Plant Alert Dispatch</h3>
+          </div>
+          <button id="whatsapp-close-btn" class="btn-close-modal">&times;</button>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">Instant automated WhatsApp dispatch message generated for the Plant Operations Manager:</p>
+        <div style="background: var(--bg-primary); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 14px; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; color: #e2e8f0; margin-bottom: 16px;" id="whatsapp-msg-preview">
+          🚨 *SIGMALENS EMERGENCY SHIFT ALERT*<br>
+          📍 Line #1 - SMT Circuit Board<br>
+          ⚠️ Rejection Rate Alert: 12.5% (Threshold: 5.0%)<br>
+          🛑 Consecutive rejects detected! Maintenance check required.<br>
+          ⏱️ Timestamp: 09:45 AM
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <a id="btn-open-whatsapp-link" href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn-primary-action" style="background: #25d366; color: #000; text-decoration: none; font-weight: 700;">
+            Open in WhatsApp →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Connect Phone QR Modal -->
+    <div class="modal-backdrop" id="mobile-qr-modal">
+      <div class="modal-content" style="max-width: 440px; padding: 24px; text-align: center;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <h3 style="font-size: 16px; font-weight: 700;">Connect Phone Camera</h3>
+          <button id="mobile-qr-close-btn" class="btn-close-modal">&times;</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
+          Turn any mobile phone into a wireless machine-vision AOI scanner on your local Wi-Fi:
+        </p>
+        <div style="background: #fff; padding: 18px; border-radius: 12px; width: fit-content; margin: 0 auto 16px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+          <!-- Procedural High-Contrast QR Code Graphic -->
+          <svg width="180" height="180" viewBox="0 0 100 100" fill="black">
+            <!-- Corner Finder 1 -->
+            <rect x="5" y="5" width="25" height="25" fill="black"/>
+            <rect x="9" y="9" width="17" height="17" fill="white"/>
+            <rect x="13" y="13" width="9" height="9" fill="black"/>
+            <!-- Corner Finder 2 -->
+            <rect x="70" y="5" width="25" height="25" fill="black"/>
+            <rect x="74" y="9" width="17" height="17" fill="white"/>
+            <rect x="78" y="13" width="9" height="9" fill="black"/>
+            <!-- Corner Finder 3 -->
+            <rect x="5" y="70" width="25" height="25" fill="black"/>
+            <rect x="9" y="74" width="17" height="17" fill="white"/>
+            <rect x="13" y="78" width="9" height="9" fill="black"/>
+            <!-- Data pattern blocks -->
+            <rect x="35" y="10" width="5" height="15" fill="black"/>
+            <rect x="45" y="5" width="15" height="5" fill="black"/>
+            <rect x="35" y="35" width="30" height="30" fill="black"/>
+            <rect x="40" y="40" width="20" height="20" fill="white"/>
+            <rect x="46" y="46" width="8" height="8" fill="black"/>
+            <rect x="75" y="40" width="15" height="10" fill="black"/>
+            <rect x="10" y="40" width="15" height="15" fill="black"/>
+            <rect x="70" y="70" width="20" height="10" fill="black"/>
+            <rect x="40" y="75" width="15" height="15" fill="black"/>
+            <rect x="80" y="85" width="10" height="10" fill="black"/>
+          </svg>
+        </div>
+        <div id="mobile-qr-url" style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-cyan); background: rgba(0, 229, 255, 0.1); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(0, 229, 255, 0.3);">
+          http://localhost:5173/
+        </div>
+      </div>
+    </div>
+
+    <!-- Virtual PLC & Modbus TCP Digital Twin Modal -->
+    <div class="modal-backdrop" id="plc-modal">
+      <div class="modal-content" style="max-width: 720px; padding: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 18px;">⚡</div>
+            <div>
+              <h3 style="font-size: 16px; font-weight: 700;">Virtual Industrial PLC & Fieldbus Bridge</h3>
+              <p style="font-size: 12px; color: var(--text-muted);">Simulated Allen-Bradley / Siemens S7-1500 Controller & Modbus TCP Server</p>
+            </div>
+          </div>
+          <button id="plc-modal-close-btn" class="btn-close-modal">&times;</button>
+        </div>
+
+        <div class="plc-rack-container">
+          <!-- PLC Status Strip -->
+          <div class="plc-status-strip">
+            <div><span style="color: var(--text-dim);">CONTROLLER:</span> <strong style="color: #fff;">SigmaLens-EdgePLC v3.2</strong></div>
+            <div><span style="color: var(--text-dim);">BUS:</span> <span style="color: var(--pass-color);">ONLINE (100 Mbps)</span></div>
+            <div><span style="color: var(--text-dim);">SCAN TIME:</span> <span style="color: var(--accent-cyan);">1.8 ms</span></div>
+          </div>
+
+          <!-- Digital I/O Terminal Rack -->
+          <div class="plc-terminal-rack">
+            <!-- Digital Inputs -->
+            <div class="plc-io-card">
+              <h4>
+                <span>Digital Inputs (DI)</span>
+                <small style="font-family: var(--font-mono); color: var(--accent-cyan);">24V DC Sink</small>
+              </h4>
+              <div class="plc-terminal-list">
+                <div class="plc-terminal-row">
+                  <span>DI-00: Safety Door Guard</span>
+                  <span class="plc-led-indicator active" id="led-di00" title="Active HIGH (Safety Closed)"></span>
+                </div>
+                <div class="plc-terminal-row">
+                  <span>DI-01: Infeed Proximity Sensor</span>
+                  <span class="plc-led-indicator" id="led-di01" title="Pulse on Part Arrival"></span>
+                </div>
+                <div class="plc-terminal-row">
+                  <span>DI-02: Auto-Cycle Pushbutton</span>
+                  <span class="plc-led-indicator active" id="led-di02" title="Auto Mode Running"></span>
+                </div>
+                <div class="plc-terminal-row">
+                  <span>DI-03: Air Pressure Normal (6 Bar)</span>
+                  <span class="plc-led-indicator active" id="led-di03"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Digital Outputs -->
+            <div class="plc-io-card">
+              <h4>
+                <span>Digital Outputs (DO)</span>
+                <small style="font-family: var(--font-mono); color: var(--accent-amber);">Relay Contacts</small>
+              </h4>
+              <div class="plc-terminal-list">
+                <div class="plc-terminal-row">
+                  <span>DO-00: Conveyor VFD Run Contactor</span>
+                  <span class="plc-led-indicator active" id="led-do00"></span>
+                </div>
+                <div class="plc-terminal-row">
+                  <span>DO-01: Vision Inspection Camera Strobe</span>
+                  <span class="plc-led-indicator" id="led-do01"></span>
+                </div>
+                <div class="plc-terminal-row">
+                  <span>DO-02: Pneumatic Reject Solenoid (SOL-2)</span>
+                  <span class="plc-led-indicator red" id="led-do02"></span>
+                </div>
+                <div class="plc-terminal-row">
+                  <span>DO-03: Tower Light Red (Scrap Alarm)</span>
+                  <span class="plc-led-indicator red" id="led-do03"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modbus TCP Holding Registers -->
+          <div style="background: #0d121c; border: 1px solid #243048; border-radius: 8px; padding: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 13px; font-weight: 700; color: var(--text-muted);">Modbus TCP 502 Holding Register Map</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-cyan);">IP: 127.0.0.1:502 / Unit ID: 1</span>
+            </div>
+            <table class="modbus-table">
+              <thead>
+                <tr>
+                  <th>Address</th>
+                  <th>Register Name</th>
+                  <th>Data Type</th>
+                  <th>Live Value (Hex)</th>
+                  <th>Dec Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>40001</td>
+                  <td>System State Word</td>
+                  <td>UINT16</td>
+                  <td id="modbus-40001-hex">0x0001</td>
+                  <td id="modbus-40001-dec">1 (RUN)</td>
+                </tr>
+                <tr>
+                  <td>40002</td>
+                  <td>Last Anomaly Score (x10)</td>
+                  <td>UINT16</td>
+                  <td id="modbus-40002-hex">0x00B9</td>
+                  <td id="modbus-40002-dec">185 (18.5%)</td>
+                </tr>
+                <tr>
+                  <td>40003</td>
+                  <td>Pass / Fail Verdict</td>
+                  <td>UINT16</td>
+                  <td id="modbus-40003-hex">0x0000</td>
+                  <td id="modbus-40003-dec">0 (PASS)</td>
+                </tr>
+                <tr>
+                  <td>40004</td>
+                  <td>Today Total Inspected</td>
+                  <td>UINT16</td>
+                  <td id="modbus-40004-hex">0x0000</td>
+                  <td id="modbus-40004-dec">0</td>
+                </tr>
+                <tr>
+                  <td>40005</td>
+                  <td>Today Rejection Count</td>
+                  <td>UINT16</td>
+                  <td id="modbus-40005-hex">0x0000</td>
+                  <td id="modbus-40005-dec">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- MQTT Real-time Telemetry Frame -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">MQTT Broker Telemetry Stream (Topic: <code>factory/line1/aoi/telemetry</code>)</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: #22c55e;">● QoS 1 CONNECTED</span>
+            </div>
+            <pre class="mqtt-code-box" id="mqtt-payload-preview">{
+  "timestamp": "2026-10-02T21:30:00.000Z",
+  "stationId": "AOI-LINE-01",
+  "recipe": "SMT Circuit Board",
+  "status": "RUNNING",
+  "metrics": {
+    "total": 0,
+    "rejectionRate": 0.0,
+    "lastVerdict": "READY"
+  }
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast-notice" class="toast-notice" role="status">
+      <span id="toast-message">Notification message</span>
+    </div>
+  </div>
+
+  <script type="module" src="/src/app.js"></script>
+</body>
+</html>
